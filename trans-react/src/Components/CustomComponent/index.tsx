@@ -9,17 +9,20 @@ interface IProps {
 export class CustomComponent extends React.Component<IProps> {
     private customFisrtChildComponent: CustomFisrtChildComponent;
     private customSecondChildComponent: CustomSecondChildComponent;
-    private customContentChilds: any[];
+    private customContentChilds: React.ReactChild[];
 
     public constructor(props: IProps) {
         super(props);
 
-        this.customContentChilds = [] as any[];
+        // Init my content component
+        this.customContentChilds = [] as  React.ReactChild[];
+
+        // Extract specific component for custom injection
         React.Children.forEach(this.props.children, this.getChild);
     }
 
     public getChild = (child: React.ReactChild, index: number) => {
-        const instanceName = (child as any).type.name;
+        const instanceName = (child as any).type.name;  // cast to any is do it to get construtor.name (production env it's not allowed)
 
         switch (instanceName) {
             case CustomFisrtChildComponent.name:

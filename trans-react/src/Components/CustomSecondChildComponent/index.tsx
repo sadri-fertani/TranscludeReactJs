@@ -8,6 +8,7 @@ export class CustomSecondChildComponent extends React.Component<IProps> {
     public constructor(props: IProps) {
         super(props);
 
+        // We can remove the binding, but I prefer to keep it for the potential futur use ;-)
         this.handlerClick = this.handlerClick.bind(this);
     }
     public render() {
