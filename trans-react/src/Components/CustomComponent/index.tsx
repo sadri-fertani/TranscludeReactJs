@@ -4,20 +4,18 @@ import { CustomSecondChildComponent } from '../CustomSecondChildComponent';
 
 interface IProps {
     message?: string;
-    // children?: any[]; // React.ReactChild[];
 }
 
 export class CustomComponent extends React.Component<IProps> {
-    private comp1: CustomFisrtChildComponent;
-    private comp2: CustomSecondChildComponent;
+    private customFisrtChildComponent: CustomFisrtChildComponent;
+    private customSecondChildComponent: CustomSecondChildComponent;
+    private customContentChilds: any[];
 
     public constructor(props: IProps) {
         super(props);
 
+        this.customContentChilds = [] as any[];
         React.Children.forEach(this.props.children, this.getChild);
-
-        // const children = React.Children.toArray(this.props.children);
-        // }
     }
 
     public getChild = (child: React.ReactChild, index: number) => {
@@ -25,10 +23,13 @@ export class CustomComponent extends React.Component<IProps> {
 
         switch (instanceName) {
             case CustomFisrtChildComponent.name:
-                this.comp1 = this.props.children![index] as CustomFisrtChildComponent;
+                this.customFisrtChildComponent = this.props.children![index] as CustomFisrtChildComponent;
                 break;
             case CustomSecondChildComponent.name:
-                this.comp2 = this.props.children![index] as CustomSecondChildComponent;
+                this.customSecondChildComponent = this.props.children![index] as CustomSecondChildComponent;
+                break;
+            default:
+                this.customContentChilds.push(child);
                 break;
         }
     }
@@ -36,16 +37,21 @@ export class CustomComponent extends React.Component<IProps> {
     public render() {
         return (
             <div className="jumbotron">
-                <h1>Test is strating...</h1>
+                <h1>Test is strating: {this.props.message} ...</h1>
                 <div className="row">
                     <div className="col-md-4">left top</div>
-                    <div className="col-md-4">{this.comp1}</div>
+                    <div className="col-md-4">{this.customFisrtChildComponent}</div>
                     <div className="col-md-4">right top</div>
                 </div>
                 <div className="row">
-                    <div className="col-md-4">left bottom</div>
+                    <div className="col-md-4">{this.customSecondChildComponent}</div>
                     <div className="col-md-4">middle bottom</div>
-                    <div className="col-md-4">{this.comp2}</div>
+                    <div className="col-md-4">right bottom</div>
+                </div>
+                <div className="row">
+                    <div className="col-md-12 alert alert-warning" role="alert">
+                        {this.customContentChilds}
+                    </div>
                 </div>
             </div>
         );
