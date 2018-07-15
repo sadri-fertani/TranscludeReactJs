@@ -16,7 +16,7 @@ export class CustomFisrtChildComponent extends React.Component<IProps> {
             <button
                 onClick={this.handlerClick}
                 type="button"
-                className="btn btn-primary">
+                className="btn btn-info">
                 CustomFisrtChildComponent -{this.props.message}-
             </button>
         );

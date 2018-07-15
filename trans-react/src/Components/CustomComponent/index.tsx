@@ -15,7 +15,7 @@ export class CustomComponent extends React.Component<IProps> {
         super(props);
 
         // Init my content component
-        this.customContentChilds = [] as  React.ReactChild[];
+        this.customContentChilds = [] as React.ReactChild[];
 
         // Extract specific component for custom injection
         React.Children.forEach(this.props.children, this.getChild);
@@ -41,17 +41,15 @@ export class CustomComponent extends React.Component<IProps> {
         return (
             <div className="jumbotron">
                 <h1>Test is strating: {this.props.message} ...</h1>
-                <div className="row">
-                    <div className="col-md-4">left top</div>
-                    <div className="col-md-4">{this.customFisrtChildComponent}</div>
-                    <div className="col-md-4">right top</div>
-                </div>
-                <div className="row">
-                    <div className="col-md-4">{this.customSecondChildComponent}</div>
-                    <div className="col-md-4">middle bottom</div>
-                    <div className="col-md-4">right bottom</div>
-                </div>
-                <div className="row">
+                <div>
+                    <div className="row">
+                        {/* header slot here */}
+                        {this.customFisrtChildComponent}
+                    </div>
+                    <div className="row">
+                        {/* body slot here */}
+                        {this.customSecondChildComponent}
+                    </div>
                     <div className="col-md-12 alert alert-warning" role="alert">
                         {this.customContentChilds}
                     </div>
