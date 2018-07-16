@@ -8,7 +8,6 @@ Try to use transclude approche with ReactJs
 <CustomComponent props...>
     <CustomFisrtChildComponent props... />
     <CustomSecondChildComponent props... />
-    Content
 </CustomComponent>
 ```
 
@@ -17,13 +16,10 @@ Try to use transclude approche with ReactJs
     <h1>Test is strating: {this.props.message} ...</h1>
     <div>
         <div className="row">
-            {this.customFisrtChildComponent}
+            <ReactContent select={CustomFisrtChildComponent.name} component={this} />
         </div>
         <div className="row">
-            {this.customSecondChildComponent}
-        </div>
-        <div className="col-md-12 alert alert-warning" role="alert">
-            {this.customContentChilds}
+            <ReactContent select={CustomSecondChildComponent.name} component={this} />
         </div>
     </div>
 </div>

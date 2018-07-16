@@ -12,22 +12,10 @@ export default class App extends React.Component {
           <h1 className="App-title">Sadri FERTANI : Transclude with ReactJs</h1>
         </header>
         <CustomComponent message="Hello world...">
-          <h1>Nothing special</h1>
           <CustomFisrtChildComponent message="Yes the first" />
-          <span>I'm alive</span>
           <CustomSecondChildComponent message="Maybe the second..." />
-          <p>
-            Hi Sadri FERTANI
-          </p>
-          <div onClick={this.handlerClick}>
-            Just for test
-          </div>
         </CustomComponent>
       </div>
     );
-  }
-
-  private handlerClick = (e: any) => {
-    alert("Div Click");
   }
 }

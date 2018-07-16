@@ -1,32 +1,5 @@
-# TranscludeReactJs
-Try to use transclude approche with ReactJs
+import * as React from 'react';
 
-## Objectif
-> Transclusion Slot Selector
-
-``` HTML
-<CustomComponent props...>
-    <CustomFisrtChildComponent props... />
-    <CustomSecondChildComponent props... />
-</CustomComponent>
-```
-
-``` HTML
-<div className="jumbotron">
-    <h1>Test is strating: {this.props.message} ...</h1>
-    <div>
-        <div className="row">
-            <ReactContent select={CustomFisrtChildComponent.name} component={this} />
-        </div>
-        <div className="row">
-            <ReactContent select={CustomSecondChildComponent.name} component={this} />
-        </div>
-    </div>
-</div>
-```
-
-``` TypeScript
-...
 interface IReactContentProps {
     select: string;
     component: React.Component;
@@ -49,4 +22,3 @@ const handlerExtractComponent = (contentProps: IReactContentProps) => {
 export const ReactContent = ({ select, component }: { select: string, component: React.Component }) => {
     return handlerExtractComponent({ select, component });
 }
-```
