@@ -14,6 +14,14 @@ export default class App extends React.Component {
         <CustomComponent message="Hello world...">
           <CustomFisrtChildComponent message="Yes the first" />
           <CustomSecondChildComponent message="Maybe the second..." />
+          <div className="alert alert-warning" role="alert">
+            <h3>Hi Sadri</h3>
+            <br />
+            <p>Just for test.</p>
+          </div>
+          <div className="alert alert-info" role="alert">
+            <h4>FERTANI</h4>
+          </div>
         </CustomComponent>
       </div>
     );
